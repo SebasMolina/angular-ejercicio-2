@@ -1,0 +1,38 @@
+<div class="container text-center mt-5 pt-5">
+    <h1 class="h1 my-3">Lista de contactos</h1>
+    <div class="container form-control">
+        <ul *ngIf="contactos.length; else noContactos">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>N° Tel.</th>
+                        <th>Fecha Cumpleaños</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contacto of contactos">
+                        <td>{{contacto.nombresContacto}}</td>
+                        <td>{{contacto.apellidosContacto}}</td>
+                        <td>{{contacto.emailContacto}}</td>
+                        <td>{{contacto.nroTelefonoContacto}}</td>
+                        <td>{{contacto.fechaCumpleaniosContacto}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm mx-1" (click)="deleteContacto(contacto.id)">Eliminar</button>
+                            <button type="button" class="btn btn-secondary btn-sm mx-1"[routerLink]="['/edit',contacto.id]">Editar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ul>
+        
+        <ng-template #noContactos>
+            <p>No tenes ningun contacto</p>
+        </ng-template>
+    </div>
+</div>
+
+

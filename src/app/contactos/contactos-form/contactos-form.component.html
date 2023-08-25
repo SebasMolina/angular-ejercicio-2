@@ -1,0 +1,48 @@
+<div class="container text-center mt-5 pt-5">
+    <h1 class="h1 my-3">Formulario de contacto</h1>
+    <div class="container form-control">
+        <form [formGroup]="contactForm" (ngSubmit)="submit()">
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Nombre</label>
+                    <input class="form-control" type="text" formControlName="nombresContacto">
+                    <div *ngIf="contactForm.get('nombresContacto')?.invalid && contactForm.get('nombresContacto')?.touched">
+                        <small class="text-danger">error nombre requerida</small>
+                    </div>
+                </div>
+                <div class="col">
+                    <label class="form-label">Apellido</label>
+                    <input class="form-control" type="text" formControlName="apellidosContacto">
+                    <div *ngIf="contactForm.get('apellidosContacto')?.invalid && contactForm.get('apellidosContacto')?.touched">
+                        <small class="text-danger">error apellido requerido</small>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" formControlName="emailContacto">
+                    <div *ngIf="contactForm.get('emailContacto')?.invalid && contactForm.get('emailContacto')?.touched">
+                        <small class="text-danger">Email Requerido</small>
+                    </div>
+                </div>
+                <div class="col">
+                    <label class="form-label">Numero de telefono</label>
+                    <input class="form-control" type="text" formControlName="nroTelefonoContacto">
+                    <div *ngIf="contactForm.get('nroTelefonoContacto')?.invalid && contactForm.get('nroTelefonoContacto')?.touched">
+                        <small class="text-danger">Número de telefono Requerido</small>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha Cumpleaños</label>
+                <input class="mx-2" type="date" formControlName="fechaCumpleaniosContacto">
+                <div *ngIf="contactForm.get('fechaCumpleaniosContacto')?.invalid && contactForm.get('fechaCumpleaniosContacto')?.touched">
+                    <small class="text-danger">Fecha cumpleaños Requerido</small>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="contactForm.invalid"> Enviar</button>
+        </form>
+    </div>
+</div>
