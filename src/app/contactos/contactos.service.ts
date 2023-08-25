@@ -24,7 +24,9 @@ export class ContactosService {
   }
 
   deletecontacto(id:string):void {
-    this.contactos.slice(Number.parseInt(id),1)
+    let index = this.contactos.findIndex(cont => cont.id === id)
+    this.contactos.splice(index,1)
+    localStorage.setItem("contactos",JSON.stringify(this.contactos));
   }
 
   updateContacto(id:string,contacto:Contact):void{
